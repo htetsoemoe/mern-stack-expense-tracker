@@ -1,5 +1,8 @@
 const Income = require('../models/Income')
 
+// @desc add new income
+// @route POST /add-income
+// @access public
 const addIncome = async (req, res) => {
     const { title, amount, category, description, date } = req.body
 
@@ -19,12 +22,34 @@ const addIncome = async (req, res) => {
     const income = await Income.create(newIncome)
 
     if (income) {
-        res.status(200).json({ message: 'Income Added' })
+        res.status(201).json({ message: 'Income Added' })
     } else {
         res.status(400).json({ message: 'Invalid income data received!' })
     }
 }
 
+// @desc get all incomes
+// @route GET /all-incomes
+// @access public
+const getAllIncomes = async (req, res) => {
+    const incomes = await Income.find().sort({createdAt: -1}) // sorting with descending
+
+    if (!incomes.length) {
+        return res.status(400).json({message: 'No income found!'})
+    }
+
+    res.json(incomes)
+}
+
+// @desc delete specified income with id
+// @route DELETE /delete-income/:id
+// @access public
+const deleteIncome = async (req, res) => {
+
+}
+
 module.exports = {
     addIncome,
+    getAllIncomes,
+    deleteIncome,
 }

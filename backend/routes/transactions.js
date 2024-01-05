@@ -8,5 +8,7 @@ const incomeController = require('../controllers/incomeController')
 // })
 
 router.post('/add-income', incomeController.addIncome)
+    .get('/all-incomes', incomeController.getAllIncomes)
+    .delete('/delete-income/:id', incomeController.deleteIncome)
 
 module.exports = router
