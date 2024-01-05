@@ -32,10 +32,10 @@ const addIncome = async (req, res) => {
 // @route GET /all-incomes
 // @access public
 const getAllIncomes = async (req, res) => {
-    const incomes = await Income.find().sort({createdAt: -1}) // sorting with descending
+    const incomes = await Income.find().sort({ createdAt: -1 }) // sorting with descending
 
     if (!incomes.length) {
-        return res.status(400).json({message: 'No income found!'})
+        return res.status(400).json({ message: 'No income found!' })
     }
 
     res.json(incomes)
@@ -45,7 +45,21 @@ const getAllIncomes = async (req, res) => {
 // @route DELETE /delete-income/:id
 // @access public
 const deleteIncome = async (req, res) => {
+    const { id } = req.params
 
+    if (!id) {
+        return res.status(400).json({ message: 'User ID required!' })
+    }
+
+    const income = await Income.findById(id).exec()
+
+    if (!income) {
+        return res.status(400).json({ message: 'User not found!' })
+    }
+
+    await income.deleteOne()
+    const deleteSuccessMsg = 'User has been deleted'
+    res.json({ message: deleteSuccessMsg })
 }
 
 module.exports = {
