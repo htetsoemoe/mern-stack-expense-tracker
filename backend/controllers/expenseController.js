@@ -32,14 +32,34 @@ const addExpense = async (req, res) => {
 // @route GET
 // @access public
 const getAllExpenses = async (req, res) => {
+    const expenses = await Expense.find().sort({ createdAt: -1 }) // sorting with descending order
 
+    if (!expenses.length) {
+        return res.status(400).json({ message: 'No expense found!' })
+    }
+
+    res.json(expenses)
 }
 
 // @desc delete specified expense with id
 // @route DELETE 
 // @access public
 const deleteExpense = async (req, res) => {
+    const { id } = req.params
 
+    if (!id) {
+        return res.status(400).json({ message: 'Expense ID required!' })
+    }
+
+    const expense = await Expense.findById(id).exec()
+
+    if (!expense) {
+        return res.status(400).json({ message: 'Expense not found!' })
+    }
+
+    await expense.deleteOne()
+    const deleteSuccessMsg = 'Expense has been deleted'
+    res.json({ message: deleteSuccessMsg })
 }
 
 module.exports = {
