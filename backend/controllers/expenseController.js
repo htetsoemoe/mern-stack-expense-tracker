@@ -29,7 +29,7 @@ const addExpense = async (req, res) => {
 }
 
 // @desc get all expenses
-// @route GET
+// @route GET /get-expenses
 // @access public
 const getAllExpenses = async (req, res) => {
     const expenses = await Expense.find().sort({ createdAt: -1 }) // sorting with descending order
@@ -42,7 +42,7 @@ const getAllExpenses = async (req, res) => {
 }
 
 // @desc delete specified expense with id
-// @route DELETE 
+// @route DELETE /delete-expense/:id
 // @access public
 const deleteExpense = async (req, res) => {
     const { id } = req.params
