@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import bg from './img/bg.png'
 import styled from 'styled-components'
 import { MainLayout } from './styles/Layouts'
 import Orb from './components/Orb/Orb'
+import Navigation from './components/Navigation/Navigation'
 
 const App = () => {
+  const [active, setActive] = useState(1) // menuItems first id is 1.
+
+  const orbMemo = useMemo(() => {
+    return <Orb />
+  }, [])
+
   return (
     <AppStyled bg={bg}>
-      <Orb />
+      {orbMemo}
       <MainLayout>
-        <h1>Hello World</h1>
+        <Navigation active={active} setActive={setActive} />
       </MainLayout>
     </AppStyled>
   )
