@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import avatar from '../../img/avatar.png'
 import { menuItems } from '../../utils/menuItems'
 import { signout } from '../../utils/icons'
+import { Link } from 'react-router-dom'
 
 const Navigation = ({ active, setActive }) => {
     return (
@@ -23,7 +24,9 @@ const Navigation = ({ active, setActive }) => {
                             onClick={() => setActive(item.id)}
                         >
                             {item.icon}
-                            <span>{item.title}</span>
+                            <Link to={item.link === '/dashboard' ? '/' : item.link}>
+                                <span>{item.title}</span>
+                            </Link>
                         </li>
                     )
                 })}
