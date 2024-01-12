@@ -24,7 +24,7 @@ const Navigation = ({ active, setActive }) => {
                             onClick={() => setActive(item.id)}
                         >
                             {item.icon}
-                            <Link to={item.link === '/dashboard' ? '/' : item.link}>
+                            <Link to={item.link === '/dashboard' ? '/' : item.link} className='nav-link'>
                                 <span>{item.title}</span>
                             </Link>
                         </li>
@@ -95,6 +95,10 @@ const NavStyled = styled.nav`
             color: rgba(34, 34, 96, .6);
             padding-left: 1rem;
             position: relative;
+
+            .nav-link{
+                text-decoration: none;
+            }
 
             /* i is an icon */
             i{
