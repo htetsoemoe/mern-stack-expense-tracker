@@ -94,6 +94,10 @@ const IncomeStyled = styled.div`
     .incomes{
       flex: 1;
     }
+
+    .form-container{
+      margin-bottom: 3rem;
+    }
   }
 `
 
