@@ -16,6 +16,7 @@ export const GlobalProvider = ({ children }) => {
             .catch((err) => {
                 setError(err.response.data.message)
             })
+        getIncomes() // for refetching 
     }
 
     const getIncomes = async () => {
@@ -26,6 +27,7 @@ export const GlobalProvider = ({ children }) => {
 
     const deleteIncome = async (id) => {
         const response = await axios.delete(`${BASE_URL}delete-income/${id}`)
+        getIncomes() // for refetching
     }
 
     const totalIncome = () => {

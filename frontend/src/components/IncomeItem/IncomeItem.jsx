@@ -4,7 +4,7 @@ import { dateFormat } from '../../utils/dateFormat'
 import Button from '../Buttons/Button'
 import { bitcoin, book, calender, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, yt } from '../../utils/icons'
 
-const IncomeItem = ({id, title, amount, date, category, description, deleteItem, indicatorColor, type}) => {
+const IncomeItem = ({ id, title, amount, date, category, description, deleteIncome, indicatorColor, type }) => {
 
     const categoryIcon = () => {
         switch (category) {
@@ -79,7 +79,7 @@ const IncomeItem = ({id, title, amount, date, category, description, deleteItem,
                             color={'#fff'}
                             iColor={'#fff'}
                             hColor={'var(--color-green)'}
-                            onClick={() => deleteItem(id)}
+                            onClick={() => deleteIncome(id)}
                         />
                     </div>
                 </div>

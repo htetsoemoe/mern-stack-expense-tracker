@@ -9,7 +9,7 @@ const Button = ({ name, icon, onClick, bg, bPad, color, bRad }) => {
             borderRadius: bRad,
             color: color,
         }}
-            onClick={onclick}
+            onClick={onClick}
         >
             {icon}
             {name}
