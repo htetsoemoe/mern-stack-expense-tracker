@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Button from '../Buttons/Button'
 import { plus } from '../../utils/icons'
 
-const Form = () => {
+const IncomeForm = () => {
   const { addIncome, error, setError } = useGlobalContext()
   const [inputState, setInputState] = useState({
     title: "",
@@ -176,4 +176,4 @@ const FormStyled = styled.form`
     }
 `;
 
-export default Form
+export default IncomeForm

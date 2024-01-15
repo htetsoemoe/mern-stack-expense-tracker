@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { InnerLayout } from '../../styles/Layouts'
 import { useGlobalContext } from '../../context/globalContext'
 import IncomeItem from '../IncomeItem/IncomeItem'
-import Form from '../Form/Form'
+import IncomeForm from '../Form/IncomeForm'
 import Swal from 'sweetalert2'
 
 const Income = () => {
@@ -41,7 +41,7 @@ const Income = () => {
         <h2 className="total-income">Total Income: <span>{" "}${" "}{totalIncome()}</span></h2>
         <div className="income-content">
           <div className="form-container">
-            <Form />
+            <IncomeForm />
           </div>
           <div className="incomes">
             {incomes.map((income) => {
