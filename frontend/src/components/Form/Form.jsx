@@ -38,25 +38,27 @@ const Form = () => {
   return (
     <FormStyled onSubmit={handleSubmit}>
       {error && <p className='error'>{error}</p>}
-      <div className="input-control">
-        <input
-          type="text"
-          value={title}
-          name={'title'}
-          placeholder='Income Title'
-          onChange={handleInput('title')}
-        />
-      </div>
-      <div className="input-control">
-        <input
-          type="text"
-          value={amount}
-          name={'amount'}
-          placeholder='Income Amount'
-          onChange={handleInput('amount')}
-        />
-      </div>
       <div className="custom-flex">
+        <div className="input-control">
+          <input
+            type="text"
+            value={title}
+            name={'title'}
+            placeholder='Income Title'
+            onChange={handleInput('title')}
+            required
+          />
+        </div>
+        <div className="input-control">
+          <input
+            type="text"
+            value={amount}
+            name={'amount'}
+            placeholder='Income Amount'
+            onChange={handleInput('amount')}
+            required
+          />
+        </div>
         <div className="">
           <DatePicker
             id="date"
@@ -66,6 +68,7 @@ const Form = () => {
             onChange={(date) => {
               setInputState({ ...inputState, date: date })
             }}
+            required
           />
         </div>
         <div className="selects">
@@ -87,25 +90,29 @@ const Form = () => {
           </select>
         </div>
       </div>
-      <div className="input-control">
-        <textarea
-          name="description"
-          value={description}
-          placeholder='Write A Description'
-          id="description"
-          cols="41" rows="4"
-          onChange={handleInput('description')}>
-        </textarea>
-      </div>
-      <div className="submit-btn">
-        <Button
-          name={'Add Income'}
-          icon={plus}
-          bPad={'.8rem 1.6rem'}
-          bRad={'30px'}
-          bg={'var(--color-accent'}
-          color={'#fff'}
-        />
+      <div className="custom-flex-textarea-btn">
+        <div className="input-control">
+          <textarea
+            name="description"
+            value={description}
+            placeholder='Write A Description'
+            id="description"
+            cols="42" rows="4"
+            onChange={handleInput('description')}
+            required
+          >
+          </textarea>
+        </div>
+        <div className="submit-btn">
+          <Button
+            name={'Add Income'}
+            icon={plus}
+            bPad={'.8rem 1.6rem'}
+            bRad={'30px'}
+            bg={'var(--color-accent'}
+            color={'#fff'}
+          />
+        </div>
       </div>
     </FormStyled>
   )
@@ -114,7 +121,7 @@ const Form = () => {
 const FormStyled = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     input, textarea, select{
         font-family: inherit;
         font-size: inherit;
@@ -142,8 +149,14 @@ const FormStyled = styled.form`
       gap: 40px;
     }
 
+    .custom-flex-textarea-btn{
+      display: flex;
+      gap: 40px;
+      align-items: flex-end;
+    }
+
     .selects{
-        display: flex;
+        //display: flex;
         //justify-content: flex-end;
         select{
             color: rgba(34, 34, 96, 0.4);
