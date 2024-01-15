@@ -4,6 +4,7 @@ import { InnerLayout } from '../../styles/Layouts'
 import { useGlobalContext } from '../../context/globalContext'
 import ExpenseItem from '../ExpenseItem/ExpenseItem'
 import Swal from 'sweetalert2'
+import ExpenseForm from '../Form/ExpenseForm'
 
 const Expense = () => {
   const { addIncome, expenses, getExpenses, deleteExpense, totalExpenses } = useGlobalContext()
@@ -39,6 +40,9 @@ const Expense = () => {
         <h1>Expenses</h1>
         <h2 className="total-expense">Total Expense: <span>{" "}${" "}{totalExpenses()}</span></h2>
         <div className="expense-content">
+          <div className="form-container">
+            <ExpenseForm />
+          </div>
           <div className="expenses">
             {expenses.map((expense) => {
               const { _id, title, amount, type, date, category, description } = expense
