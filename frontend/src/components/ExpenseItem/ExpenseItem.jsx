@@ -4,8 +4,7 @@ import { dateFormat } from '../../utils/dateFormat'
 import Button from '../Buttons/Button'
 import { bitcoin, book, calender, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, yt } from '../../utils/icons'
 
-const IncomeItem = ({ id, title, amount, date, category, description, deleteIncome, indicatorColor, type }) => {
-
+const ExpenseItem = ({ id, title, amount, date, category, description, deleteExpense, indicatorColor, type }) => {
     const categoryIcon = () => {
         switch (category) {
             case 'salary':
@@ -55,7 +54,7 @@ const IncomeItem = ({ id, title, amount, date, category, description, deleteInco
     console.log("type", type)
 
     return (
-        <IncomeItemStyled indicator={indicatorColor}>
+        <ExpenseItemStyled indicator={indicatorColor}>
             <div className="icon">
                 {type === 'expense' ? expenseCatIcon() : categoryIcon()}
             </div>
@@ -79,16 +78,16 @@ const IncomeItem = ({ id, title, amount, date, category, description, deleteInco
                             color={'#fff'}
                             iColor={'#fff'}
                             hColor={'var(--color-green)'}
-                            onClick={() => deleteIncome(id)}
+                            onClick={() => deleteExpense(id)}
                         />
                     </div>
                 </div>
             </div>
-        </IncomeItemStyled>
+        </ExpenseItemStyled>
     )
 }
 
-const IncomeItemStyled = styled.div`
+const ExpenseItemStyled = styled.div`
     background: #FCF6F9;
     border: 2px solid #FFFFFF;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
@@ -154,6 +153,6 @@ const IncomeItemStyled = styled.div`
             }
         }
     }
-`;
+`
 
-export default IncomeItem
+export default ExpenseItem
