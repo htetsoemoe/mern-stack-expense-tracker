@@ -4,6 +4,7 @@ import { InnerLayout } from '../../styles/Layouts'
 import Chart from '../Chart/Chart'
 import { useGlobalContext } from '../../context/globalContext'
 import { dollar } from '../../utils/icons'
+import History from '../History/History'
 
 const Dashboard = () => {
     const { getIncomes, getExpenses, totalExpenses, totalIncome, totalBalance, incomes, expenses } = useGlobalContext()
@@ -39,6 +40,27 @@ const Dashboard = () => {
                                     {dollar} {totalBalance()}
                                 </p>
                             </div>
+                        </div>
+                    </div>
+                    <div className="history-con">
+                        <History />
+                        <h2 className="salary-title">Min <span>Salary</span> Max </h2>
+                        <div className="salary-item">
+                            <p>
+                                ${Math.min(...incomes.map(income => income.amount))}
+                            </p>
+                            <p>
+                                ${Math.max(...incomes.map(income => income.amount))}
+                            </p>
+                        </div>
+                        <h2 className="expense-title">Min <span>Expense</span> Max</h2>
+                        <div className="expense-item">
+                            <p>
+                                ${Math.min(...expenses.map(expense => expense.amount))}
+                            </p>
+                            <p>
+                                ${Math.max(...expenses.map(expense => expense.amount))}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -96,6 +118,66 @@ const DashboardStyled = styled.div`
                 .balance{
                     grid-column: span 2;
                     margin-bottom: 1.5rem;
+                }
+            }
+        }
+
+        .history-con{
+            grid-column: 4 / -1;
+
+            h2{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .salary-title{
+                padding: 1rem;
+                font-size: 1.2rem;
+                margin-bottom: 0;
+                span{
+                    font-size: 1.8rem;
+                }
+            }
+            
+            .salary-item{
+                background: #FCF6F9;
+                border: 2px solid #FFFFFF;
+                box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+                padding: 1rem;
+                border-radius: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                p{
+                    color: var(--color-green);
+                    font-weight: bold;
+                    font-size: 1.6rem;
+                }
+            }
+
+            .expense-title{
+                padding: 1rem;
+                font-size: 1.2rem;
+                margin-top: 0.5rem;
+                span{
+                    font-size: 1.8rem;
+                }
+            }
+
+            .expense-item{
+                background: #FCF6F9;
+                border: 2px solid #FFFFFF;
+                box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+                padding: 1rem;
+                border-radius: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                p{
+                    color: var(--color-red);
+                    font-weight: bold;
+                    font-size: 1.6rem;
                 }
             }
         }
