@@ -46,7 +46,6 @@ const Expense = () => {
           <div className="expenses">
             {expenses.map((expense) => {
               const { _id, title, amount, type, date, category, description } = expense
-              console.log(expense)
               return <ExpenseItem
                 key={_id}
                 id={_id}

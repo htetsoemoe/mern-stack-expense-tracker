@@ -51,8 +51,6 @@ const ExpenseItem = ({ id, title, amount, date, category, description, deleteExp
         }
     }
 
-    console.log("type", type)
-
     return (
         <ExpenseItemStyled indicator={indicatorColor}>
             <div className="icon">

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { dateFormat } from '../../utils/dateFormat'
-import Button from '../Buttons/Button'
 import { bitcoin, book, calender, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, yt } from '../../utils/icons'
 
-const IncomeItem = ({ id, title, amount, date, category, description, deleteIncome, indicatorColor, type }) => {
+const TransactionHistory = (props) => {
+    // console.log(props.item)
+    const { id, title, amount, type, createdAt, description, category } = props.item
 
     const categoryIcon = () => {
         switch (category) {
@@ -52,8 +53,11 @@ const IncomeItem = ({ id, title, amount, date, category, description, deleteInco
         }
     }
 
+    let indicatorColor = type === 'expense' ? 'var(--color-red)' : 'var(--color-green)'
+    let btnTypeColor = type === 'expense' ? 'var(--color-red)' : 'var(--color-green)'
+
     return (
-        <IncomeItemStyled indicator={indicatorColor}>
+        <TransactionHistoryStyled indicator={indicatorColor} typebtncolor={btnTypeColor}>
             <div className="icon">
                 {type === 'expense' ? expenseCatIcon() : categoryIcon()}
             </div>
@@ -62,32 +66,23 @@ const IncomeItem = ({ id, title, amount, date, category, description, deleteInco
                 <div className="inner-content">
                     <div className="text">
                         <p>{dollar} {amount}</p>
-                        <p>{calender} {dateFormat(date)}</p>
+                        <p>{calender} {dateFormat(createdAt)}</p>
                         <p>
                             {comment}
                             {description}
                         </p>
                     </div>
-                    <div className="btn-con">
-                        <Button
-                            icon={trash}
-                            bPad={'1rem'}
-                            bRad={'50%'}
-                            bg={'var(--primary-color'}
-                            color={'#fff'}
-                            iColor={'#fff'}
-                            hColor={'var(--color-green)'}
-                            onClick={() => deleteIncome(id)}
-                        />
-                    </div>
+                    <p className="type-btn">
+                        {type}
+                    </p>
                 </div>
             </div>
-        </IncomeItemStyled>
+        </TransactionHistoryStyled>
     )
 }
 
-const IncomeItemStyled = styled.div`
-    background: #FCF6F9;
+const TransactionHistoryStyled = styled.div`
+     background: #FCF6F9;
     border: 2px solid #FFFFFF;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
     border-radius: 20px;
@@ -150,8 +145,15 @@ const IncomeItemStyled = styled.div`
                     opacity: 0.8;
                 }
             }
+            .type-btn{
+                padding: 0.2rem 1rem;
+                border: 1px solid #fff;
+                border-radius: 10%;
+                background: ${props => props.typebtncolor};
+                color: white;
+            }
         }
     }
-`;
+`
 
-export default IncomeItem
+export default TransactionHistory
