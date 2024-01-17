@@ -47,19 +47,19 @@ const Dashboard = () => {
                         <h2 className="salary-title">Min <span>Salary</span> Max </h2>
                         <div className="salary-item">
                             <p>
-                                ${Math.min(...incomes.map(income => income.amount))}
+                                ${" "}{Math.min(...incomes.map(income => income.amount))}
                             </p>
                             <p>
-                                ${Math.max(...incomes.map(income => income.amount))}
+                                ${" "}{Math.max(...incomes.map(income => income.amount))}
                             </p>
                         </div>
                         <h2 className="expense-title">Min <span>Expense</span> Max</h2>
                         <div className="expense-item">
                             <p>
-                                ${Math.min(...expenses.map(expense => expense.amount))}
+                                ${" "}{Math.min(...expenses.map(expense => expense.amount))}
                             </p>
                             <p>
-                                ${Math.max(...expenses.map(expense => expense.amount))}
+                                ${" "}{Math.max(...expenses.map(expense => expense.amount))}
                             </p>
                         </div>
                     </div>
